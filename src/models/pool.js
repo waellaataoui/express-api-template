@@ -6,5 +6,4 @@ dotenv.config();
 
 export const pool = new Pool({
   connectionString,
-  ssl: true,
 });
