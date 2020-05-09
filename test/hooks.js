@@ -4,11 +4,11 @@ import {
   insertIntoTables,
 } from '../src/utils/queryFunctions';
 
-before(async () => {
-  await createTables();
-  await insertIntoTables();
-});
+// before(async () => {
+//   await createTables();
+//   await insertIntoTables();
+// });
 
-after(async () => {
-  await dropTables();
-});
+// after(async () => {
+//   await dropTables();
+// });
