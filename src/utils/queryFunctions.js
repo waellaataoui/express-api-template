@@ -5,7 +5,6 @@ import {
   createMessageTable,
 } from './queries';
 
-console.log(pool);
 export const executeQueryArray = async arr =>
   new Promise(resolve => {
     const stop = arr.length;
