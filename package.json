@@ -12,6 +12,7 @@
     "migrate_test": "cd src; sequelize db:migrate  --env test ",
     "seed_test": "cd src; sequelize db:seed:all --env test ",
     "pretest": "yarn run migrate_test;yarn run seed_test;",
+    "posttest": "cd src;sequelize db:migrate:undo --env test",
     "test": "nyc --reporter=html --reporter=text --reporter=lcov env test=true mocha -r @babel/register --timeout 5000",
     "coverage": "nyc report  --reporter=text-lcov | coveralls"
   },
