@@ -9,9 +9,11 @@
     "lint": "./node_modules/.bin/eslint ./src",
     "pretty": "prettier --write '**/*.{js,json}' '!node_modules/**'",
     "postpretty": "yarn lint --fix",
+    "migrate_test": "cd src; sequelize db:migrate  --env test ",
+    "seed_test": "cd src; sequelize db:seed:all --env test ",
+    "pretest": "yarn run migrate_test;yarn run seed_test;",
     "test": "nyc --reporter=html --reporter=text --reporter=lcov env test=true mocha -r @babel/register --timeout 5000",
-    "coverage": "nyc report  --reporter=text-lcov | coveralls",
-    "runQuery": "babel-node ./src/utils/runQuery"
+    "coverage": "nyc report  --reporter=text-lcov | coveralls"
   },
   "dependencies": {
     "axios": "^0.19.2",
@@ -42,6 +44,7 @@
     "nodemon": "^2.0.2",
     "nyc": "^15.0.0",
     "prettier": "^1.19.1",
+    "sequelize-cli": "^5.5.1",
     "sinon": "^9.0.1",
     "sinon-chai": "^3.5.0",
     "supertest": "^4.0.2"
