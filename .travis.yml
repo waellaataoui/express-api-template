@@ -4,7 +4,7 @@ env:
   global:
     - CC_TEST_REPORTER_ID=edc465d234dfcdbd7d238a717d02e40729b7b5c6f471f82609242aa875f7a6d9
     - PGVER=12
-    - PGPORT=5433
+    - PGPORT=5432
 matrix:
   include:
     - node_js: '12'
@@ -31,6 +31,8 @@ addons:
       - postgresql-12
       - postgresql-client-12
 before_install:
-  - sudo cp /etc/postgresql/{12}/main/pg_hba.conf
-  - sudo /etc/init.d/postgresql restart
+  - sudo pg_dropcluster --stop 12 main
+  - sudo pg_upgradecluster 11 main
+  - sudo pg_ctlcluster 12 main restart
+  - sudo pg_dropcluster 11 main
 
