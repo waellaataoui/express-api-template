@@ -3,6 +3,8 @@ language: node_js
 env:
   global:
     - CC_TEST_REPORTER_ID=edc465d234dfcdbd7d238a717d02e40729b7b5c6f471f82609242aa875f7a6d9
+    - PGVER=12
+    - PGPORT=5433
 matrix:
   include:
     - node_js: '12'
@@ -28,8 +30,7 @@ addons:
     packages:
       - postgresql-12
       - postgresql-client-12
-env:
-    global:
-        - PGVER=12
-        - PGPORT=5433
+before_install:
+  - sudo cp /etc/postgresql/{12}/main/pg_hba.conf
+  - sudo /etc/init.d/postgresql restart
 
